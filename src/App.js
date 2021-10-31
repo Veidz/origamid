@@ -25,15 +25,17 @@ const mario = {
 
 const App = () => {
   const dados = luana;
-
+  const gastos = dados.compras.reduce((acc, p) => {
+    return Number(p.preco.replace('R$ ', '')) + acc
+  }, 0);
   return (
     <>
     <p>{`Nome: ${dados.cliente}`}</p>
     <p>{`Idade: ${dados.idade}`}</p>
     <p>Situação: <span style={{color: dados.ativa ? 'green' : 'red'}}>{`${dados.ativa ? 'Ativa' : 'Inativa'}`}</span></p>
+    <p className="gastos">Total gasto: {gastos}</p>
+    <p>{gastos > 10000 ? 'Você está gastando demais' : ''}</p> 
     </>
   );
-};
-
-
+}
 export default App;
