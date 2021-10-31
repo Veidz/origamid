@@ -41,8 +41,8 @@ function App() {
           {dados.ativa ? 'Ativa' : 'Inativa'}
         </span>
       </p>
-      <p>Total gasto: {totalPrice}</p>
-      <p>{totalPrice > 10000 ? 'Você está gastando demais' : ''}</p>
+      <p>Total gasto: R$ {totalPrice}</p>
+      {totalPrice > 10000 && <em>Você está gastando demais</em>}
     </div>
   );
 }
