@@ -26,15 +26,23 @@ const mario = {
 function App() {
   const dados = luana;
 
+  const prices = dados.compras.map(({ preco }) => (
+    +(preco.replace('R$ ', ''))
+  ));
+
+  const totalPrice = prices.reduce((acc, current) => acc + current);
+
   return (
     <div>
-      <p>{`Nome: ${dados.cliente}`}</p>
-      <p>{`Idade: ${dados.idade}`}</p>
+      <p>Nome: {dados.cliente}</p>
+      <p>Idade: {dados.idade}</p>
       <p>
         Situação: <span style={{ color: dados.ativa ? 'green' : 'red' }}>
-          {`${dados.ativa ? 'Ativa' : 'Inativa'}`}
+          {dados.ativa ? 'Ativa' : 'Inativa'}
         </span>
       </p>
+      <p>Total gasto: {totalPrice}</p>
+      <p>{totalPrice > 10000 ? 'Você está gastando demais' : ''}</p>
     </div>
   );
 }
